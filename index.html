@@ -56,7 +56,7 @@
     --blob-2: rgba(88, 101, 242, 0.15);
 }
 
-/* 🔥 NEW: Custom Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-main); }
 ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
@@ -71,7 +71,7 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* 🔥 NEW: Animated Ambient Blobs */
+/* Animated Ambient Blobs */
 .bg-blob {
     position: fixed;
     border-radius: 50%;
@@ -144,10 +144,17 @@ body {
 
 .container { width: 100%; display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 15px; box-sizing: border-box; }
 
-/* 🔥 NEW: Smooth Entrance Animations */
+/* Transitions & Animations */
 @keyframes slideUpFade {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🔥 NEW: Smooth Fade/Scale Transition for Tabs and Packs */
+.fade-in { animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.98) translateY(15px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 /* ========================= */
@@ -157,7 +164,7 @@ body {
     width: min(900px, 95vw); height: 220px; display: flex; border-radius: 18px; overflow: hidden;
     border: 1px solid var(--border-color); background: var(--card-bg); position: relative;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Applied animation */
+    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px var(--shadow-color); border-color: var(--border-hover); z-index: 10; }
 
@@ -185,7 +192,12 @@ body {
 .verifier { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); font-weight: 700; margin-bottom: 8px; }
 .sub { font-size: 12px; color: var(--text-sub); line-height: 1.4; }
 .pack-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.pack-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; background: var(--input-bg); border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 6px; color: var(--text-dim); }
+
+/* 🔥 MODIFIED: Made Pack Badge click-friendly */
+.pack-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; background: var(--input-bg); border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 6px; color: var(--text-dim); transition: all 0.2s ease; }
+.pack-badge.interactive-pack { cursor: pointer; }
+.pack-badge.interactive-pack:hover { background: var(--text-main); color: var(--bg-main); border-color: var(--text-main); transform: translateY(-2px); box-shadow: 0 4px 10px var(--shadow-color); }
+
 .level-points { font-size: 15px; font-weight: 800; color: var(--accent); padding: 6px 14px; border-radius: 8px; display: inline-block; width: max-content; text-transform: uppercase; letter-spacing: 1px; background: rgba(255, 207, 64, 0.1); border: 1px solid rgba(255, 207, 64, 0.2); }
 
 /* LIST CARDS (Leaderboard, Packs, etc.) */
@@ -193,7 +205,7 @@ body {
     width: min(900px, 95vw); background: linear-gradient(135deg, var(--card-bg) 0%, var(--card-grad-2) 100%);
     border: 1px solid var(--border-color); border-radius: 18px; padding: 22px; box-sizing: border-box;
     display: flex; flex-direction: column; gap: 6px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Applied animation */
+    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
 }
 .list-card:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: 0 10px 25px var(--shadow-color); z-index: 10; }
 .interactive-card { cursor: pointer; }
@@ -241,7 +253,6 @@ body {
 .modal-header { border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 25px; }
 .modal-title { font-size: 28px; font-weight: 800; color: var(--text-main); }
 
-/* 🔥 NEW: Copy ID style */
 .copy-id { cursor: pointer; background: var(--input-bg); border: 1px solid var(--border-color); padding: 3px 8px; border-radius: 6px; transition: all 0.2s ease; display: inline-block; margin-top: 4px; font-weight: 600;}
 .copy-id:hover { background: var(--text-main); color: var(--bg-main); border-color: var(--text-main); }
 
@@ -303,7 +314,6 @@ body {
 </head>
 <body>
 
-<!-- 🔥 NEW: Animated Background Blobs -->
 <div class="bg-blob blob-1"></div>
 <div class="bg-blob blob-2"></div>
 
@@ -319,7 +329,6 @@ body {
     </div>
 
     <div class="nav-actions">
-        <!-- 🔥 NEW: Random Level Button -->
         <button class="theme-btn" id="btn-random" title="Random Level">🎲</button>
         <button class="theme-btn" id="theme-toggle" title="Toggle Theme">☀️</button>
         <button class="nav-credits-btn" id="btn-credits">Credits</button>
@@ -339,7 +348,7 @@ body {
     </div>
 </div>
 
-<div class="container" id="levels-container"></div>
+<div class="container fade-in" id="levels-container"></div>
 <div class="container hidden-section" id="leaderboard-container"></div>
 
 <div class="container hidden-section" id="packs-container">
@@ -427,7 +436,7 @@ let levelCardsElements = [];
 let leaderboardCardsElements = []; 
 let packCardsElements = [];
 let currentPackLevelElements = []; 
-let fullLevelsData = []; // 🔥 NEW: Stored globally for the Random feature
+let fullLevelsData = []; 
 
 const globalLevelsMap = new Map();
 const levelToPacksMap = new Map();
@@ -466,8 +475,9 @@ function openLevelModal(l, associatedPacks) {
     const exactPoints = l.points !== undefined ? l.points : 0;
     const yt = parseYoutube(l.youtube);
     
+    // 🔥 MODIFIED: Added 'interactive-pack' and 'data-pack' attributes for clicking
     let packBadgesHTML = associatedPacks && associatedPacks.length > 0 
-        ? `<div class="pack-badges" style="margin-top: 12px;">${associatedPacks.map(p => `<span class="pack-badge">${p}</span>`).join("")}</div>`
+        ? `<div class="pack-badges" style="margin-top: 12px;">${associatedPacks.map(p => `<span class="pack-badge interactive-pack" data-pack="${p}">${p}</span>`).join("")}</div>`
         : "";
 
     let verifierLinkHTML = yt.id 
@@ -500,7 +510,6 @@ function openLevelModal(l, associatedPacks) {
             <div class="modal-title">#${l.place} ${l.name}</div>
             <div class="sub" style="font-size: 14px; margin-top: 6px;">
                 by ${l.author} <br> 
-                <!-- 🔥 NEW: Click to copy ID -->
                 <span class="copy-id" onclick="navigator.clipboard.writeText('${l.id}'); const orig=this.innerHTML; this.innerHTML='Copied! ✓'; setTimeout(()=>this.innerHTML=orig, 1500);">ID: ${l.id} 📋</span>
             </div>
             <div class="level-points" style="margin-top: 12px;">+${exactPoints} PTS</div>
@@ -569,6 +578,26 @@ document.addEventListener('click', (e) => {
             openLevelModal(levelData, levelToPacksMap.get(levelName.toLowerCase()) || []);
         }
     }
+    // 🔥 NEW: Catch clicks on Pack Badges inside Modals
+    else if (e.target.closest('[data-pack]')) {
+        e.stopPropagation();
+        const packName = e.target.closest('[data-pack]').dataset.pack;
+        
+        // 1. Close the Level Modal
+        levelModal.classList.remove("active");
+        
+        // 2. Switch to Packs tab smoothly
+        switchTab(btnPacks, packsContainer, "Search pack by name...");
+        
+        // 3. Short timeout to let UI settle, then trigger a click on that specific Pack Card
+        setTimeout(() => {
+            const targetCard = packCardsElements.find(c => c.dataset.pack === packName.toLowerCase());
+            if(targetCard) {
+                targetCard.click();
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // Make sure they start at top
+            }
+        }, 200);
+    }
 });
 
 // Close Modals
@@ -624,7 +653,7 @@ Promise.all([
     fetch("rules.json").then(r => r.json()).catch(() => []) 
 ]).then(([levelsData, packsData, rulesData]) => {
 
-    fullLevelsData = levelsData; // Store for Random Button
+    fullLevelsData = levelsData; 
 
     packsData.forEach(pack => {
         pack.levels.forEach(levelName => {
@@ -678,7 +707,6 @@ Promise.all([
         lCard.className = "list-card interactive-card";
         lCard.dataset.player = p.name.toLowerCase(); 
         
-        // Minimalistic Leaderboard Item
         lCard.innerHTML = `
             <div class="list-header">
                 <div class="list-title">#${index + 1} ${p.name}</div>
@@ -712,7 +740,15 @@ Promise.all([
 
         pCard.addEventListener("click", () => {
             packsListContainer.classList.add("hidden-section");
-            document.getElementById("pack-view-container").classList.remove("hidden-section");
+            
+            const packView = document.getElementById("pack-view-container");
+            packView.classList.remove("hidden-section");
+            
+            // 🔥 NEW: Trigger fade transition
+            packView.classList.remove("fade-in");
+            void packView.offsetWidth; // trigger reflow
+            packView.classList.add("fade-in");
+
             document.getElementById("pack-view-title").innerText = pack.name;
             
             const packLevelsWrapper = document.getElementById("pack-levels-wrapper");
@@ -746,7 +782,7 @@ Promise.all([
     }
 });
 
-// 🔥 NEW: Random Level Logic
+// Random Level Logic
 document.getElementById("btn-random").addEventListener("click", () => {
     if (!fullLevelsData || fullLevelsData.length === 0) return;
     const randomLvl = fullLevelsData[Math.floor(Math.random() * fullLevelsData.length)];
@@ -759,7 +795,15 @@ document.getElementById("btn-random").addEventListener("click", () => {
 // ==========================================
 document.getElementById("back-to-packs-btn").addEventListener("click", () => {
     document.getElementById("pack-view-container").classList.add("hidden-section");
-    document.getElementById("packs-list-container").classList.remove("hidden-section");
+    
+    const packsList = document.getElementById("packs-list-container");
+    packsList.classList.remove("hidden-section");
+    
+    // 🔥 NEW: Trigger fade transition
+    packsList.classList.remove("fade-in");
+    void packsList.offsetWidth; // trigger reflow
+    packsList.classList.add("fade-in");
+
     searchInput.placeholder = "Search pack by name...";
     searchInput.value = ""; searchInput.dispatchEvent(new Event('input')); 
 });
@@ -785,6 +829,11 @@ function switchTab(activeBtn, activeContainer, placeholder) {
     
     activeBtn.classList.add("active");
     activeContainer.classList.remove("hidden-section");
+    
+    // 🔥 NEW: Trigger a smooth UI transition whenever a tab is switched
+    activeContainer.classList.remove("fade-in");
+    void activeContainer.offsetWidth; // trigger reflow
+    activeContainer.classList.add("fade-in");
     
     if (activeBtn === btnPacks) {
         document.getElementById("pack-view-container").classList.add("hidden-section");
