@@ -56,7 +56,7 @@
     --blob-2: rgba(88, 101, 242, 0.15);
 }
 
-/* Custom Scrollbar */
+/* 🔥 NEW: Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-main); }
 ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
@@ -71,7 +71,7 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Animated Ambient Blobs */
+/* 🔥 NEW: Animated Ambient Blobs */
 .bg-blob {
     position: fixed;
     border-radius: 50%;
@@ -95,7 +95,8 @@ body {
 .navbar {
     display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
     padding: 15px max(5vw, 20px); background: var(--nav-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; gap: 15px;
+    border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100;
+    gap: 15px;
     transition: background 0.3s ease, border-color 0.3s ease;
 }
 .nav-title { font-size: 24px; font-weight: 800; color: var(--text-main); text-transform: uppercase; letter-spacing: 2px; }
@@ -104,10 +105,12 @@ body {
 /* SEARCH */
 .nav-search { flex-grow: 1; max-width: 400px; position: relative; transition: opacity 0.3s ease, transform 0.3s ease; }
 #search-input {
-    width: 100%; box-sizing: border-box; padding: 12px 20px 12px 45px;
+    width: 100%; box-sizing: border-box;
+    padding: 12px 20px 12px 45px;
     font-family: 'Rubik', sans-serif; font-size: 15px; font-weight: 600;
     background: var(--input-bg); border: 1px solid var(--border-color);
-    color: var(--text-main); border-radius: 30px; outline: none; transition: all 0.3s ease;
+    color: var(--text-main);
+    border-radius: 30px; outline: none; transition: all 0.3s ease;
 }
 #search-input::placeholder { color: var(--text-dim); font-weight: 400; }
 #search-input:focus { background: var(--input-focus); border-color: var(--border-hover); box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); }
@@ -117,7 +120,8 @@ body {
 /* BUTTONS & TABS */
 .theme-btn, .nav-credits-btn {
     background: var(--theme-btn-bg); border: 1px solid var(--border-color); color: var(--text-main);
-    border-radius: 12px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; height: 40px; box-sizing: border-box;
+    border-radius: 12px;
+    cursor: pointer; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; height: 40px; box-sizing: border-box;
 }
 .theme-btn { font-size: 18px; width: 40px; }
 .nav-credits-btn { padding: 0 16px; font-family: 'Rubik', sans-serif; font-weight: 700; font-size: 14px; text-transform: uppercase; }
@@ -127,7 +131,8 @@ body {
 .discord-btn {
     display: flex; align-items: center; gap: 8px; background: #5865F2; color: white;
     text-decoration: none; padding: 10px 20px; border-radius: 12px; font-weight: 700;
-    font-size: 14px; text-transform: uppercase; transition: all 0.3s ease; border: none; height: 40px; box-sizing: border-box;
+    font-size: 14px; text-transform: uppercase; transition: all 0.3s ease; border: none;
+    height: 40px; box-sizing: border-box;
 }
 .discord-btn:hover { background: #4752C4; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(88, 101, 242, 0.5); }
 .discord-btn svg { width: 20px; height: 20px; fill: currentColor; }
@@ -135,36 +140,39 @@ body {
 .tabs-container { width: 100%; display: flex; justify-content: center; padding-top: 25px; }
 .tabs { display: flex; gap: 10px; width: min(900px, 95vw); flex-wrap: wrap; }
 .tab-btn {
-    padding: 12px 24px; background: var(--card-bg); border: 2px solid var(--tab-border); color: var(--text-main);
+    padding: 12px 24px;
+    background: var(--card-bg); border: 2px solid var(--tab-border); color: var(--text-main);
     border-radius: 12px; cursor: pointer; font-family: 'Rubik', sans-serif; font-weight: 800;
-    font-size: 16px; transition: all 0.3s ease; flex: 1; text-align: center;
+    font-size: 16px;
+    transition: all 0.3s ease; flex: 1; text-align: center;
 }
 .tab-btn:hover { border-color: var(--border-hover); transform: translateY(-2px); }
 .tab-btn.active { background: var(--tab-active-bg); color: var(--tab-active-text); border-color: var(--tab-active-bg); box-shadow: 0 0 15px var(--shadow-color); }
 
 .container { width: 100%; display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 15px; box-sizing: border-box; }
 
-/* 🔥 FIX: Clean entrance animation (No 'forwards' bug, hover works flawlessly) */
+/* 🔥 NEW: Smooth Entrance Animations */
 @keyframes slideUpFade {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ========================= */
 /* CARDS (LEVELS) */
 /* ========================= */
 .card {
-    width: min(900px, 95vw); height: 220px; display: flex; border-radius: 18px; overflow: hidden;
+    width: min(900px, 95vw); height: 220px; display: flex;
+    border-radius: 18px; overflow: hidden;
     border: 1px solid var(--border-color); background: var(--card-bg); position: relative;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    /* 'backwards' ensures hover state isn't overridden after animation ends */
-    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards; 
+    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px var(--shadow-color); border-color: var(--border-hover); z-index: 10; }
 
 .left {
     width: 35%; height: 100%; background: linear-gradient(135deg, var(--card-grad-1) 0%, var(--card-grad-2) 100%);
-    display: flex; flex-direction: column; justify-content: space-between; padding: 20px; box-sizing: border-box;
+    display: flex; flex-direction: column;
+    justify-content: space-between; padding: 20px; box-sizing: border-box;
     z-index: 2; border-right: 2px solid var(--border-color); cursor: pointer; transition: background 0.3s ease;
 }
 .left:hover { background: linear-gradient(135deg, var(--card-grad-2) 0%, var(--card-bg) 100%); }
@@ -174,7 +182,8 @@ body {
 .play-button {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px;
     background-color: rgba(255, 0, 0, 0.8); border-radius: 50%; display: flex; justify-content: center; align-items: center;
-    transition: background-color 0.3s ease, transform 0.2s ease; pointer-events: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    pointer-events: none;
 }
 .play-button::after {
     content: ""; display: block; border-style: solid; border-width: 12px 0 12px 20px;
@@ -186,20 +195,36 @@ body {
 .verifier { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); font-weight: 700; margin-bottom: 8px; }
 .sub { font-size: 12px; color: var(--text-sub); line-height: 1.4; }
 .pack-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pack-badge { 
+    font-size: 10px; font-weight: 700; text-transform: uppercase; background: var(--input-bg);
+    border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 6px; color: var(--text-dim); 
+}
 
-/* Pack Badge click-friendly */
-.pack-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; background: var(--input-bg); border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 6px; color: var(--text-dim); transition: all 0.2s ease; }
-.pack-badge.interactive-pack { cursor: pointer; }
-.pack-badge.interactive-pack:hover { background: var(--text-main); color: var(--bg-main); border-color: var(--text-main); transform: translateY(-2px); box-shadow: 0 4px 10px var(--shadow-color); }
+/* 🔥 NEW: Interactive Pack Badges */
+.pack-badge.interactive-pack { 
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+}
+.pack-badge.interactive-pack:hover { 
+    background: var(--text-main); 
+    color: var(--bg-main); 
+    border-color: var(--text-main); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
 
-.level-points { font-size: 15px; font-weight: 800; color: var(--accent); padding: 6px 14px; border-radius: 8px; display: inline-block; width: max-content; text-transform: uppercase; letter-spacing: 1px; background: rgba(255, 207, 64, 0.1); border: 1px solid rgba(255, 207, 64, 0.2); }
+.level-points { font-size: 15px; font-weight: 800; color: var(--accent);
+    padding: 6px 14px; border-radius: 8px; display: inline-block; width: max-content; text-transform: uppercase; letter-spacing: 1px; background: rgba(255, 207, 64, 0.1);
+    border: 1px solid rgba(255, 207, 64, 0.2); }
 
 /* LIST CARDS (Leaderboard, Packs, etc.) */
 .list-card {
-    width: min(900px, 95vw); background: linear-gradient(135deg, var(--card-bg) 0%, var(--card-grad-2) 100%);
+    width: min(900px, 95vw);
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--card-grad-2) 100%);
     border: 1px solid var(--border-color); border-radius: 18px; padding: 22px; box-sizing: border-box;
-    display: flex; flex-direction: column; gap: 6px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards; 
+    display: flex; flex-direction: column;
+    gap: 6px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .list-card:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: 0 10px 25px var(--shadow-color); z-index: 10; }
 .interactive-card { cursor: pointer; }
@@ -247,6 +272,7 @@ body {
 .modal-header { border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 25px; }
 .modal-title { font-size: 28px; font-weight: 800; color: var(--text-main); }
 
+/* 🔥 NEW: Copy ID style */
 .copy-id { cursor: pointer; background: var(--input-bg); border: 1px solid var(--border-color); padding: 3px 8px; border-radius: 6px; transition: all 0.2s ease; display: inline-block; margin-top: 4px; font-weight: 600;}
 .copy-id:hover { background: var(--text-main); color: var(--bg-main); border-color: var(--text-main); }
 
@@ -254,6 +280,7 @@ body {
 .modal-victors-title { font-size: 16px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
 .modal-victors-list { display: flex; flex-direction: column; gap: 8px; }
 
+/* Sleek Victor Items */
 .victor-item {
     display: flex; justify-content: space-between; align-items: center;
     padding: 10px 15px; background: rgba(255, 255, 255, 0.02); border: 1px solid transparent;
@@ -262,9 +289,11 @@ body {
 .victor-item:hover { background: var(--input-bg); border-color: var(--border-color); transform: translateX(5px); }
 .victor-name { font-weight: 700; font-size: 16px; color: var(--text-main); }
 
+/* Interactive Hover for Player Names */
 .interactive-player { cursor: pointer; transition: color 0.2s ease; }
 .interactive-player:hover { color: var(--accent); }
 
+/* Clean Links */
 .victor-link {
     color: var(--text-sub); text-decoration: none; font-weight: 600; font-size: 12px;
     display: flex; align-items: center; gap: 5px; transition: all 0.2s ease;
@@ -276,6 +305,7 @@ body {
 }
 .verifier-link:hover { color: #5865F2; }
 
+/* Player Profile Specifics */
 .player-profile-points { font-size: 24px; font-weight: 800; color: var(--accent); margin-top: 5px; }
 .player-tags-container { display: flex; flex-wrap: wrap; gap: 8px; }
 .player-level-tag {
@@ -363,7 +393,6 @@ body {
     </div>
 </div>
 
-<!-- MODALS -->
 <div id="level-modal" class="modal-overlay">
     <div class="modal-content">
         <button class="modal-close" id="modal-close-btn">✕</button>
@@ -425,19 +454,12 @@ const playerModalBody = document.getElementById("player-modal-body");
 let levelCardsElements = []; 
 let leaderboardCardsElements = []; 
 let packCardsElements = [];
-let currentPackLevelElements = []; 
-let fullLevelsData = []; 
+let currentPackLevelElements = [];
+let fullLevelsData = []; // 🔥 NEW: Stored globally for the Random feature
 
 const globalLevelsMap = new Map();
 const levelToPacksMap = new Map();
 let globalLeaderboardData = {}; 
-
-// 🔥 NEW: Applies dynamic cascading animation delay for a better transition effect
-function setStagger(element, index) {
-    const delay = `${Math.min(index * 0.04, 0.4)}s`;
-    element.style.animationDelay = delay;
-    element.dataset.delay = delay; // Save the delay so we can restore it after search
-}
 
 function parseYoutube(youtubeInput) {
     if (!youtubeInput) return { id: "", start: 0 };
@@ -450,7 +472,6 @@ function parseYoutube(youtubeInput) {
         if (url.hostname.includes('youtu.be')) videoId = url.pathname.slice(1);
         else if (url.searchParams.has('v')) videoId = url.searchParams.get('v');
         else videoId = url.pathname.split('/').pop();
-
         const t = url.searchParams.get('t') || url.searchParams.get('start');
         if (t) {
             if (/^\d+s?$/.test(t)) startSeconds = parseInt(t, 10);
@@ -472,9 +493,9 @@ function openLevelModal(l, associatedPacks) {
     const exactPoints = l.points !== undefined ? l.points : 0;
     const yt = parseYoutube(l.youtube);
     
-    // Interactive pack badges
+    // 🔥 UPDATED: Clickable Pack Badges inside Modal
     let packBadgesHTML = associatedPacks && associatedPacks.length > 0 
-        ? `<div class="pack-badges" style="margin-top: 12px;">${associatedPacks.map(p => `<span class="pack-badge interactive-pack" data-pack="${p}">${p}</span>`).join("")}</div>`
+        ? `<div class="pack-badges" style="margin-top: 12px;">${associatedPacks.map(p => `<span class="pack-badge interactive-pack" onclick="event.stopPropagation(); jumpToPack('${p.replace(/'/g, "\\'")}');">${p}</span>`).join("")}</div>`
         : "";
 
     let verifierLinkHTML = yt.id 
@@ -516,14 +537,13 @@ function openLevelModal(l, associatedPacks) {
         <div class="modal-victors-section">
             <div class="modal-victors-title">Verifier</div>
             <div class="modal-victors-list">${verifierHTML}</div>
-        </div>
+         </div>
 
         <div class="modal-victors-section">
             <div class="modal-victors-title">Victors (${l.victors ? l.victors.length : 0})</div>
             <div class="modal-victors-list">${victorsHTML}</div>
         </div>
     `;
-
     playerModal.classList.remove("active");
     levelModal.classList.add("active");
 }
@@ -531,11 +551,9 @@ function openLevelModal(l, associatedPacks) {
 function openPlayerModal(playerName) {
     const pData = globalLeaderboardData[playerName];
     if (!pData) return;
-
     let verifiedHTML = pData.verified.length > 0 
         ? pData.verified.map(lvl => `<span class="player-level-tag" data-level="${lvl}">${lvl}</span>`).join("") 
         : `<span class="empty-text">No levels verified.</span>`;
-
     let beatenHTML = pData.beaten.length > 0 
         ? pData.beaten.map(lvl => `<span class="player-level-tag" data-level="${lvl}">${lvl}</span>`).join("") 
         : `<span class="empty-text">No levels completed yet.</span>`;
@@ -554,7 +572,6 @@ function openPlayerModal(playerName) {
             <div class="player-tags-container">${beatenHTML}</div>
         </div>
     `;
-
     levelModal.classList.remove("active");
     playerModal.classList.add("active");
 }
@@ -575,28 +592,28 @@ document.addEventListener('click', (e) => {
             openLevelModal(levelData, levelToPacksMap.get(levelName.toLowerCase()) || []);
         }
     }
-    // Catch clicks on Pack Badges inside Modals
-    else if (e.target.closest('[data-pack]')) {
-        e.stopPropagation();
-        const packName = e.target.closest('[data-pack]').dataset.pack;
-        
-        levelModal.classList.remove("active");
-        switchTab(btnPacks, packsContainer, "Search pack by name...");
-        
-        setTimeout(() => {
-            const targetCard = packCardsElements.find(c => c.dataset.pack === packName.toLowerCase());
-            if(targetCard) {
-                targetCard.click();
-                window.scrollTo({ top: 0, behavior: 'smooth' }); 
-            }
-        }, 150);
-    }
 });
 
+// Close Modals
 document.getElementById("modal-close-btn").addEventListener("click", () => levelModal.classList.remove("active"));
 document.getElementById("player-modal-close-btn").addEventListener("click", () => playerModal.classList.remove("active"));
 levelModal.addEventListener("click", (e) => { if (e.target === levelModal) levelModal.classList.remove("active"); });
 playerModal.addEventListener("click", (e) => { if (e.target === playerModal) playerModal.classList.remove("active"); });
+
+// 🔥 NEW: Function to Jump to a Pack
+function jumpToPack(packName) {
+    // 1. Close the modal
+    levelModal.classList.remove("active");
+    
+    // 2. Switch to the Packs tab
+    switchTab(btnPacks, packsContainer, "Search pack by name...");
+    
+    // 3. Find the correct pack card and simulate a click to open it
+    const targetPackCard = packCardsElements.find(card => card.dataset.pack === packName.toLowerCase());
+    if (targetPackCard) {
+        targetPackCard.click();
+    }
+}
 
 // ==========================================
 // DOM GENERATORS
@@ -605,12 +622,14 @@ function createLevelCardElement(l) {
     const exactPoints = l.points !== undefined ? l.points : 0;
     const yt = parseYoutube(l.youtube);
     const associatedPacks = levelToPacksMap.get(l.name.toLowerCase()) || [];
-    let packBadgesHTML = associatedPacks.length > 0 ? `<div class="pack-badges">${associatedPacks.map(p => `<span class="pack-badge">${p}</span>`).join("")}</div>` : "";
+    
+    // 🔥 UPDATED: Clickable Pack Badges on the Cards
+    let packBadgesHTML = associatedPacks.length > 0 ?
+    `<div class="pack-badges">${associatedPacks.map(p => `<span class="pack-badge interactive-pack" onclick="event.stopPropagation(); jumpToPack('${p.replace(/'/g, "\\'")}');">${p}</span>`).join("")}</div>` : "";
 
     const card = document.createElement("div");
     card.className = "card";
-    card.dataset.name = l.name.toLowerCase(); 
-
+    card.dataset.name = l.name.toLowerCase();
     const left = document.createElement("div");
     left.className = "left";
     left.innerHTML = `
@@ -631,7 +650,6 @@ function createLevelCardElement(l) {
         let embedUrl = `https://www.youtube.com/embed/${yt.id}?autoplay=1${yt.start > 0 ? `&start=${yt.start}` : ''}`;
         right.innerHTML = `<iframe width="100%" height="100%" src="${embedUrl}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     });
-
     card.appendChild(left); card.appendChild(right);
     return card;
 }
@@ -645,7 +663,7 @@ Promise.all([
     fetch("rules.json").then(r => r.json()).catch(() => []) 
 ]).then(([levelsData, packsData, rulesData]) => {
 
-    fullLevelsData = levelsData; 
+    fullLevelsData = levelsData; // Store for Random Button
 
     packsData.forEach(pack => {
         pack.levels.forEach(levelName => {
@@ -656,10 +674,9 @@ Promise.all([
     });
 
     levelsData.sort((a,b) => a.place - b.place);
-    levelsData.forEach((l, index) => {
+    levelsData.forEach(l => {
         globalLevelsMap.set(l.name.toLowerCase(), l); 
         const card = createLevelCardElement(l);
-        setStagger(card, index); // Applied Stagger
         levelsContainer.appendChild(card);
         levelCardsElements.push(card); 
     });
@@ -676,7 +693,7 @@ Promise.all([
             globalLeaderboardData[l.verifier].points += exactPoints;
             if (!globalLeaderboardData[l.verifier].verified.includes(l.name)) {
                 globalLeaderboardData[l.verifier].verified.push(l.name);
-            }
+             }
         }
 
         if (l.victors && Array.isArray(l.victors)) {
@@ -684,7 +701,7 @@ Promise.all([
                 const trimmedPlayer = playerEntry.split('=')[0].trim();
                 initPlayer(trimmedPlayer);
                 globalLeaderboardData[trimmedPlayer].points += exactPoints;
-                if (!globalLeaderboardData[trimmedPlayer].beaten.includes(l.name)) {
+                 if (!globalLeaderboardData[trimmedPlayer].beaten.includes(l.name)) {
                     globalLeaderboardData[trimmedPlayer].beaten.push(l.name);
                 }
             });
@@ -700,6 +717,7 @@ Promise.all([
         lCard.className = "list-card interactive-card";
         lCard.dataset.player = p.name.toLowerCase(); 
         
+        // Minimalistic Leaderboard Item
         lCard.innerHTML = `
             <div class="list-header">
                 <div class="list-title">#${index + 1} ${p.name}</div>
@@ -711,13 +729,12 @@ Promise.all([
         `;
         
         lCard.addEventListener("click", () => openPlayerModal(p.name));
-        setStagger(lCard, index); // Applied Stagger
         leaderboardContainer.appendChild(lCard);
         leaderboardCardsElements.push(lCard);
     });
 
     const packsListContainer = document.getElementById("packs-list-container");
-    packsData.forEach((pack, index) => {
+    packsData.forEach((pack) => {
         const validLevels = pack.levels.filter(lvl => globalLevelsMap.has(lvl.toLowerCase()));
         if (validLevels.length === 0) return;
 
@@ -735,25 +752,21 @@ Promise.all([
         pCard.addEventListener("click", () => {
             packsListContainer.classList.add("hidden-section");
             document.getElementById("pack-view-container").classList.remove("hidden-section");
-            document.getElementById("pack-view-title").innerText = pack.name;
+             document.getElementById("pack-view-title").innerText = pack.name;
             
             const packLevelsWrapper = document.getElementById("pack-levels-wrapper");
             packLevelsWrapper.innerHTML = "";
             currentPackLevelElements = [];
 
-            validLevels.forEach((levelName, lvlIndex) => {
+            validLevels.forEach(levelName => {
                 const cardElement = createLevelCardElement(globalLevelsMap.get(levelName.toLowerCase()));
-                setStagger(cardElement, lvlIndex); // Creates a beautiful waterfall when opening packs
                 packLevelsWrapper.appendChild(cardElement);
                 currentPackLevelElements.push(cardElement);
             });
-
             searchInput.placeholder = `Search in ${pack.name}...`;
             searchInput.value = "";
-            searchInput.dispatchEvent(new Event('input'));
         });
 
-        setStagger(pCard, index); // Applied Stagger
         packsListContainer.appendChild(pCard);
         packCardsElements.push(pCard);
     });
@@ -771,12 +784,12 @@ Promise.all([
     }
 });
 
+// 🔥 NEW: Random Level Logic
 document.getElementById("btn-random").addEventListener("click", () => {
     if (!fullLevelsData || fullLevelsData.length === 0) return;
     const randomLvl = fullLevelsData[Math.floor(Math.random() * fullLevelsData.length)];
     openLevelModal(randomLvl, levelToPacksMap.get(randomLvl.name.toLowerCase()) || []);
 });
-
 
 // ==========================================
 // NAVIGATION & SEARCH
@@ -790,24 +803,15 @@ document.getElementById("back-to-packs-btn").addEventListener("click", () => {
 
 searchInput.addEventListener("input", (e) => {
     const query = e.target.value.toLowerCase();
-    
-    // 🔥 FIX: Smoothly filter without breaking animation states
-    const filterCards = (elements, dataKey) => {
-        elements.forEach(card => {
-            const isVisible = card.dataset[dataKey].includes(query);
-            card.style.display = isVisible ? "flex" : "none";
-            // Temporarily disable the waterfall stagger during search for instant snappiness
-            card.style.animationDelay = (query !== "") ? "0s" : card.dataset.delay;
-        });
-    };
-
-    if (btnLevels.classList.contains("active")) filterCards(levelCardsElements, 'name');
-    else if (btnLeaderboard.classList.contains("active")) filterCards(leaderboardCardsElements, 'player');
-    else if (btnPacks.classList.contains("active")) {
+    if (btnLevels.classList.contains("active")) {
+        levelCardsElements.forEach(card => card.style.display = card.dataset.name.includes(query) ? "flex" : "none");
+    } else if (btnLeaderboard.classList.contains("active")) {
+        leaderboardCardsElements.forEach(card => card.style.display = card.dataset.player.includes(query) ? "flex" : "none");
+    } else if (btnPacks.classList.contains("active")) {
         if (!document.getElementById("packs-list-container").classList.contains("hidden-section")) {
-            filterCards(packCardsElements, 'pack');
-        } else {
-            filterCards(currentPackLevelElements, 'name');
+            packCardsElements.forEach(card => card.style.display = card.dataset.pack.includes(query) ? "flex" : "none");
+         } else {
+            currentPackLevelElements.forEach(card => card.style.display = card.dataset.name.includes(query) ? "flex" : "none");
         }
     }
 });
@@ -825,7 +829,7 @@ function switchTab(activeBtn, activeContainer, placeholder) {
     }
 
     searchInput.placeholder = placeholder;
-    searchInput.value = ""; searchInput.dispatchEvent(new Event('input')); 
+    searchInput.value = ""; searchInput.dispatchEvent(new Event('input'));
 }
 
 btnLevels.addEventListener("click", () => switchTab(btnLevels, levelsContainer, "Search level by name..."));
